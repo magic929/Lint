@@ -4,6 +4,12 @@
 
 using namespace std;
 
+// 非递归方法，所有子集都是从前一个子集当中加上新的数值
+// 1. 先进性排序(题目要求必须非降序)
+// 2. 在result里压入一个空集
+// 3. 遍历result，把新数值依次压入上一次的结果中，在压入result
+// 4. 直到所有数字全部填入完
+// 时间复杂度：O(n^2)
 vector<vector<int>> subsets(vector<int> &nums){
     vector<vector<int>> result;
     vector<int> tmp;
