@@ -15,7 +15,11 @@ void helper(vector<vector<int>> &result, vector<int> nums, int n){
     }
 }
 
-
+// 回溯算法: 一个数组可以由固定一个数，在各个位置的情况
+// 1. 判断数组长度为0 则返回空数组
+// 2. 从数组开头开始，跟数组结尾交换。递归直到到头。进入容器
+// 3，回溯到上一个情况。重复2
+// 时间复杂度为：O(n!) 
 vector<vector<int>> permute(vector<int> &nums){
     vector<vector<int>> result;
     int n = nums.size() - 1;
@@ -28,32 +32,9 @@ vector<vector<int>> permute(vector<int> &nums){
     return result;
 }
 
-vector<vector<int>> nonRecPermute(vector<int> &nums){
-     vector<vector<int>> result;
-        int n = nums.size() - 1;
-        int max = n;
-        if(max < 0){
-            result.push_back(nums);
-            return result;
-        }
-        int i = 0;
-        while(i <= max){
-            swap(nums[i], nums[n]);
-            while((--n) > 0){
-                swap(nums[i], nums[n]);
-            }
-            result.push_back(nums);
-            swap(nums[i], nums[n]);
-            i++;
-        }
-        
-        return result;
-}
-
 int main(){
     vector<int> nums = {1, 2, 3};
-    //vector<vector<int>> result = permute(nums);
-    vector<vector<int>> result = nonRecPermute(nums);
+    vector<vector<int>> result = permute(nums);
     for(int i = 0; i < result.size(); i++){
         vector<int> tmp = result[i];
         for(int j = 0; j < tmp.size(); j++){

@@ -6,6 +6,8 @@ using namespace std;
 stack<int> stk, minstk;
 
 // create more one stack for saving the min number
+// 1. 推入堆栈一个数值，并判断该数值在最小堆栈中是不是小于top中的值
+// 2. 如果小于则推入最小堆栈中
 void push(int number){
     stk.push(number);
     if(minstk.empty() || number <= minstk.top()){
@@ -13,6 +15,10 @@ void push(int number){
     }
 }
 
+// 1. 判断堆栈中top得值
+// 2. 如果该值等于最小堆栈的top值，则最小堆栈推出。
+// 3. 原堆栈推出
+// 4. 返回top数值
 int pop(){
     // stack.top return inserted number (a first in last out) 
     int top = stk.top();

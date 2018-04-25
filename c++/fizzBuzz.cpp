@@ -7,7 +7,12 @@ using namespace std;
 string helper(int mod, string w){
     return mod == 0? w : "";
 }
-
+// 直接字符串构造（可用一个if语句）
+// 1. 先判断是否为3， 如果是则返回fizz
+// 2. 再判断是否为15， 如果是则返回空格
+// 3. 最后判断是否为5， 如果是则返回buzz
+// 注： 顺序很重要
+// 时间复杂度为：O(n)
 vector<string> fizzBuzz(int n){
     vector<string> result;
     for(int i = 1 ; i <= n; i++){

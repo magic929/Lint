@@ -17,7 +17,7 @@ class TreeNode {
           this->left = this->right = NULL;
       }
   };
-
+// 
 TreeNode *deserialize(string data){
     if(data == "{}"){
         return NULL;
@@ -78,7 +78,12 @@ void helper(TreeNode *node, int k1, int k2){
     }
     helper(node->right, k1, k2);
 }
-
+// 题目要求是从小到大排列，根据给出的测试集目视为中序遍历
+// 1. 递归左子树到底
+// 2. 判断此节点的数值是不是在范围之内
+// 3. 把符合条件的数值推入容器
+// 4. 开始遍历右子树到底
+// 时间复杂度：O(n)
 void searchRange(TreeNode *root, int k1, int k2){
     helper(root, k1, k2);
 }
