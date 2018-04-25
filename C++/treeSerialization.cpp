@@ -19,6 +19,10 @@ class TreeNode {
       }
   };
 //Non-recursive Binary Tree Preorder Traversal
+// 1. 把根节点放到数组中，然后依次放入左右子树，直到结束
+// 2. 去数组中掉最后的NULL节点
+// 3. 判断是否数组为空，为空则返回{}
+// 4. 不为空，则依次输入节点数值，碰到null的时候输入#
 string serialize(TreeNode *root){
     vector<TreeNode *> Q;
     Q.push_back(root);
@@ -57,7 +61,11 @@ string serialize(TreeNode *root){
 
     return ss.str();
 }
-
+// 1. 根据，号分成字符串组
+// 2. 创建堆栈来存储将要生成的二叉树
+// 3. 如果没有到底，则依次生成左节点，并把左节点推入堆， 标记左节点
+// 4. 生成右节点，并把右节点推入堆。标记左节点。并推出已经完成左右子节点的节点
+// 5. 如果到底且左子节点以推入，则推出该节点
 TreeNode *deserialize(string data){
     if(data == "{}"){
         return NULL;
